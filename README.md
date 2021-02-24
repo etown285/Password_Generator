@@ -1,2 +1,2 @@
-# Password_Generator-
+# Password_Generator
 Password Generator made from JavaScript 
