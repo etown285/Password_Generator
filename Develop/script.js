@@ -1,3 +1,6 @@
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -17,15 +20,65 @@ generateBtn.addEventListener("click", writePassword);
 
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var characterselection = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 var numericcaseChar = "0123456789";
 
 // create a variable to hold all available possibilities
 var choiceArray = "";
 
-function generatePassword() {
+function generatePassword(x, needsLower, needSpecial, needsNumber, length) {
 
-  return ''
+  currentLength = 0
+  pw = ""
+
+  // generate password
+  if(x){
+    pw += getRandomUpperChar();
+
+  }
+  if(needsLower){
+    pw += getRandomLowerChar();
+    
+  }
+  if(needSpecial){
+    pw += getRandomSpecialChar();
+    
+  }
+ 
+  if(needsNumber){
+    pw += getRandomnumericcaseChar();
+    
+  }
+  var i;
+  for (i = 0; i < length - pw.length; i++) {
+    if(x){
+      pw += getRandomUpperChar();
+  
+    }
+    if (pw.length==length) {
+      break;
+    }
+    if(needsLower){
+      pw += getRandomLowerChar();
+      
+    }
+    if (pw.length==length) {
+      break;
+    }
+    if(needSpecial){
+      pw += getRandomSpecialChar();
+      
+    }
+    if (pw.length==length) {
+      break;
+    }
+    if(needsNumber){
+      pw += getRandomnumericcaseChar();
+      
+    }
+    
+  } 
+  return pw;
 }
 
 function getRandomLowerChar() {
@@ -41,9 +94,9 @@ function getRandomUpperChar() {
   return uppercaseChar.charAt(getRandomInt(uppercaseChar.length));
 }
 
-function getRandomCharacterSelection() {
+function getRandomSpecialChar() {
 
-  return characterselection.charAt(getRandomInt(characterselection.length));
+  return specialChar.charAt(getRandomInt(specialChar.length));
 }
 
 
@@ -64,27 +117,39 @@ function promptUser() {
   else {
     return alert("Password Length must be between 8 and 128 characters");
     }
+
+    var needsLower=false;
+    var needsNumber=false;
+    var needsUpper=false;
+    var needSpecial=false;
+    
     var lowerCaseChoice = confirm("Do you need lower case characters?");
     //Select lowercase characters 
     if(lowerCaseChoice === true) {
-      choiceArray += lowercaseChar;
+      
+      needsLower=true;
+      
     }
     var upperCaseChoice = confirm("Do you need upper case characters?");
     //Select uppercase characters 
     if(upperCaseChoice === true) {
-      choiceArray += uppercaseChar;
+      
+      needsUpper=true;
     }
     
     var numericCaseChoice = confirm("Do you need numeric case characters?");
     //Select numeric characters
     if(numericCaseChoice === true) {
-      choiceArray += numericcaseChar;
+     
+      needsNumber=true;
     } 
 
     var specialCharacterChoice = confirm("Do you need special characters?");
     //Select special characters
     if(specialCharacterChoice === true) {
-    choiceArray += characterselection;
+      
+      needSpecial=true;
     } 
-  console.log(choiceArray)
-}
+    var p=generatePassword (needsUpper, needsLower, needSpecial, needsNumber, passLength);
+    console.log(p);
+  }
