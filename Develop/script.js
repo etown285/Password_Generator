@@ -21,7 +21,7 @@ var characterselection = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 var numericcaseChar = "0123456789";
 
 // create a variable to hold all available possibilities
-var choiceArray = [];
+var choiceArray = "";
 
 function generatePassword() {
 
@@ -64,24 +64,27 @@ function promptUser() {
   else {
     return alert("Password Length must be between 8 and 128 characters");
     }
-    var lowercaseChar = confirm("Do you need lower case characters?");
+    var lowerCaseChoice = confirm("Do you need lower case characters?");
     //Select lowercase characters 
-    if(lowercaseChar === true) {
-      
+    if(lowerCaseChoice === true) {
+      choiceArray += lowercaseChar;
     }
-    var uppercaseChar = confirm("Do you need upper case characters?");
+    var upperCaseChoice = confirm("Do you need upper case characters?");
     //Select uppercase characters 
-    if(uppercaseChar === true) {
-      
+    if(upperCaseChoice === true) {
+      choiceArray += uppercaseChar;
     }
-    var numericcaseChar = confirm("Do you need numeric case characters?");
+    
+    var numericCaseChoice = confirm("Do you need numeric case characters?");
     //Select numeric characters
-    if(numericcaseChar === true) {
+    if(numericCaseChoice === true) {
+      choiceArray += numericcaseChar;
+    } 
 
+    var specialCharacterChoice = confirm("Do you need special characters?");
+    //Select special characters
+    if(specialCharacterChoice === true) {
+    choiceArray += characterselection;
     } 
-    var characterselection = confirm("Do you need special characters?");
-    //Select numeric characters
-    if(characterselection === true) {
-      
-    } 
+  console.log(choiceArray)
 }
