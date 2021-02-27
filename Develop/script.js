@@ -7,9 +7,7 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   promptUser();
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
+
 }
 
 // Add event listener to generate button
@@ -19,9 +17,14 @@ generateBtn.addEventListener("click", writePassword);
 // Define all the available characters
 
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
+var lowercaseArray = ["abcdefghijklmnopqrstuvwxyz"]
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var uppercaseArray = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
+var specialChar = "!#$%&'()*+,-./:;<=>?@][/^_`{|}~";
+var lowercaseArray = ["abcdefghijklmnopqrstuvwxyz"]
 var numericcaseChar = "0123456789";
+var lowercaseArray = ["abcdefghijklmnopqrstuvwxyz"]
+var approvedChar = ''
 
 // create a variable to hold all available possibilities
 var choiceArray = "";
@@ -29,56 +32,43 @@ var choiceArray = "";
 function generatePassword(x, needsLower, needSpecial, needsNumber, length) {
 
   currentLength = 0
-  pw = ""
+  pw = '';
 
   // generate password
   if(x){
     pw += getRandomUpperChar();
+    approvedChar += uppercaseChar
 
   }
   if(needsLower){
     pw += getRandomLowerChar();
+    approvedChar += lowercaseChar
     
   }
   if(needSpecial){
     pw += getRandomSpecialChar();
+    approvedChar += specialChar
     
   }
  
   if(needsNumber){
     pw += getRandomnumericcaseChar();
+    approvedChar += numericcaseChar
     
   }
   var i;
-  for (i = 0; i < length - pw.length; i++) {
-    if(x){
-      pw += getRandomUpperChar();
-  
-    }
-    if (pw.length==length) {
-      break;
-    }
-    if(needsLower){
-      pw += getRandomLowerChar();
-      
-    }
-    if (pw.length==length) {
-      break;
-    }
-    if(needSpecial){
-      pw += getRandomSpecialChar();
-      
-    }
-    if (pw.length==length) {
-      break;
-    }
-    if(needsNumber){
-      pw += getRandomnumericcaseChar();
-      
-    }
+
+  console.log(length - pw.length)
+
+  var numberToAdd = length - pw.length
+  for (i = 0; i < numberToAdd; i++) {
+    console.log(approvedChar);
+    console.log(i)
+   pw += approvedChar.charAt(getRandomInt(approvedChar.length))
+    console.log(pw.length)
     
   } 
-  return pw;
+  return pw
 }
 
 function getRandomLowerChar() {
@@ -110,7 +100,7 @@ function promptUser() {
   // Prompt User to choose if they want to use UPPER case letters
   var passLength = prompt("How long would you like your password?");
   // Validate the length
-  if(passLength >= 8 && passLength < 128) {
+  if(passLength >= 8 && passLength < 129) {
     // if both expressions evaluate to true
     console.log("Valid Length");
     }
@@ -150,6 +140,11 @@ function promptUser() {
       
       needSpecial=true;
     } 
-    var p=generatePassword (needsUpper, needsLower, needSpecial, needsNumber, passLength);
-    console.log(p);
+    var pw=generatePassword (needsUpper, needsLower, needSpecial, needsNumber, passLength);
+    console.log(pw);
+    
+    var passwordText = document.querySelector("#password");
+    passwordText.value = pw;
+
   }
+
