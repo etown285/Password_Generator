@@ -1,3 +1,4 @@
+// Selects random characters for the password
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
@@ -29,12 +30,13 @@ var approvedChar = ''
 // create a variable to hold all available possibilities
 var choiceArray = "";
 
+ // generates the paramaters to display the password
 function generatePassword(x, needsLower, needSpecial, needsNumber, length) {
 
   currentLength = 0
   pw = '';
 
-  // generate password
+ 
   if(x){
     pw += getRandomUpperChar();
     approvedChar += uppercaseChar
@@ -72,10 +74,7 @@ function generatePassword(x, needsLower, needSpecial, needsNumber, length) {
 }
 
 function getRandomLowerChar() {
-  /*
-  for (var i = 0; i < lowercaseChar.length; i++) {
-    alert(lowercaseChar.charAt(i));
-  } */
+
   return lowercaseChar.charAt(getRandomInt(lowercaseChar.length));
 }
 
@@ -140,6 +139,8 @@ function promptUser() {
       
       needSpecial=true;
     } 
+
+    //Displays password in the text box and console
     var pw=generatePassword (needsUpper, needsLower, needSpecial, needsNumber, passLength);
     console.log(pw);
     
@@ -147,4 +148,3 @@ function promptUser() {
     passwordText.value = pw;
 
   }
-
