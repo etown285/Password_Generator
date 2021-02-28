@@ -18,13 +18,9 @@ generateBtn.addEventListener("click", writePassword);
 // Define all the available characters
 
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
-var lowercaseArray = ["abcdefghijklmnopqrstuvwxyz"]
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var uppercaseArray = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
 var specialChar = "!#$%&'()*+,-./:;<=>?@][/^_`{|}~";
-var lowercaseArray = ["abcdefghijklmnopqrstuvwxyz"]
 var numericcaseChar = "0123456789";
-var lowercaseArray = ["abcdefghijklmnopqrstuvwxyz"]
 var approvedChar = ''
 
 // create a variable to hold all available possibilities
