@@ -13,7 +13,13 @@ Password Generator made from JavaScript.
 
 ## Usage
 
+![Screenshot](https://github.com/etown285/Password_Generator/blob/main/Assets/Screenshot%20Password%20Generator.PNG)
+
 ## Links
+
+* Application URL: (https://etown285.github.io/Password_Generator/)
+
+* GitHub Repository URL: (https://github.com/etown285/Password_Generator)
 
 License
 
