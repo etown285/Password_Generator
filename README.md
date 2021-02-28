@@ -5,10 +5,11 @@ Password Generator made from JavaScript.
 
 ### Project Overview
 
-* Created prompt list with password length, lowercase characters, uppercase characters, numeric characters, special characters. 
-* Defined all available characters that can be used
-* Set character limits between 8 and 128. 
+* Created prompt list with choices password length, lowercase characters, uppercase characters, numeric characters, special characters. 
+* Defined all available characters that can be used.
+* Set character limits between 8 and 128 and created an alert to prompt user for new selection if they aren't within the parameters. 
 * Created a string to bring back random variables for each choice. 
+* Created a for loop to make sure the correct amount of characters were being applied to the user. 
  
 
 ## Usage
